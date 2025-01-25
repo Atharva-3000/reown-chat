@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 import { headers } from "next/headers"; // added
-
+import { Toaster } from "react-hot-toast";
 export const metadata: Metadata = {
   title: "AppKit ChatAI",
   description: "Powered by Reown AppKit"
@@ -25,6 +25,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {children}
+        <Toaster position="top-center"/>
       </body>
     </html>
   );
