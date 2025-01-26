@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useState } from "react"
@@ -57,15 +58,11 @@ export default function Home() {
     <>
       <main className="min-h-screen flex flex-col">
         <div className="fixed inset-0 -z-10">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-          >
-            <source src="./video.mp4" type="video/mp4" />
-          </video>
+          <img
+        src="/bg.jpg"
+        alt="Background"
+        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+          />
           <div className="absolute top-0 left-0 w-full h-full bg-black/50 -z-10" />
         </div>
         <Navbar />

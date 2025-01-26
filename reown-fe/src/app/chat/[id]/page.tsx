@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import toast from "react-hot-toast"
 import { LogOut } from "lucide-react"
+
 export default function ChatPage() {
     const { id } = useParams()
     const { isConnected } = useAppKitAccount()
@@ -18,7 +19,6 @@ export default function ChatPage() {
             router.push("/")
         }
     }, [isConnected, router])
-
     return (
         <div className="flex flex-col h-screen">
             <div className="bg-white shadow-sm p-4 flex items-center justify-between">

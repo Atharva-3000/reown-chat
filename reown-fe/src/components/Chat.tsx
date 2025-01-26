@@ -7,12 +7,15 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Send } from "lucide-react"
 import {SyncLoader} from "react-spinners"
+import { useAppKitAccount, useAppKitNetwork } from "@reown/appkit/react"
+
 export default function Chat() {
   const [conversation, setConversation] = useState<Message[]>([])
   const [input, setInput] = useState<string>("")
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
-
+  const walletData = useAppKitAccount();
+  const networkDeets = useAppKitNetwork();
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }
@@ -20,22 +23,37 @@ export default function Chat() {
   useEffect(scrollToBottom, [messagesEndRef])
 
   const handleSendMessage = async () => {
-    if (!input.trim()) return
-    setIsLoading(true)
-    const userMessage: Message = { role: "user", content: input }
-    setConversation((prev) => [...prev, userMessage])
-    setInput("")
-
-    const { messages, newMessage } = await continueConversation([...conversation, userMessage])
-
-    let textContent = ""
+    if (!input.trim()) return;
+    setIsLoading(true);
+    const userMessage: Message = { role: "user", content: input };
+    setConversation((prev) => [...prev, userMessage]);
+    setInput("");
+  
+   
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { messages, newMessage } = await continueConversation(
+      [...conversation, userMessage], 
+      walletData,
+      networkDeets
+    );
+  
+    // Stream each chunk as it arrives
+    setConversation((prev) => [...prev, { role: "assistant", content: "" }]);
+    
     for await (const delta of readStreamableValue(newMessage)) {
-      textContent = `${textContent}${delta}`
-      setConversation([...messages, { role: "assistant", content: textContent }])
+      setConversation((prev) => {
+        const updatedMessages = [...prev];
+        const lastMessageIndex = updatedMessages.length - 1;
+        updatedMessages[lastMessageIndex] = {
+          role: "assistant",
+          content: updatedMessages[lastMessageIndex].content + delta
+        };
+        return updatedMessages;
+      });
     }
-    setIsLoading(false)
+    
+    setIsLoading(false);
   }
-
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)] bg-gray-100">
       <div className="flex-1 overflow-y-auto">
