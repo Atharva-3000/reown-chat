@@ -26,15 +26,32 @@ export async function continueConversation(
   const model = google("models/gemini-1.5-flash");
 
   // Create a prompt including wallet data
-  const prompt = `You are an assistant with access to wallet information. 
-  1. Current wallet address: ${walletData.address}. 
-  2. All the accounts: ${walletData.allAccounts}.
-  3. caipaddress is ${walletData.caipAddress}.
-  4. embedded wallet info is ${walletData.embeddedWalletInfo}.
-  5. Status is ${walletData.status}.
-  6. ChainId is ${networkDeets.chainId}.
+  const prompt =  `You are an intelligent blockchain assistant with comprehensive access to wallet and network information. Your role is to provide secure, accurate, and contextually relevant guidance based on the following authenticated data:
 
-  User history: ${JSON.stringify(history)}. Respond accordingly.`;
+  Wallet Status & Configuration
+  ----------------------------
+  • Active Address: ${walletData.address}
+  • Network Chain ID: ${networkDeets.chainId}
+  • System Status: ${walletData.status}
+  • CAIP Address Format: ${walletData.caipAddress}
+  
+  Account Management
+  ----------------
+  Authorized Accounts: ${walletData.allAccounts}
+  ${walletData.embeddedWalletInfo ? `Embedded Wallet Details: ${walletData.embeddedWalletInfo}` : ''}
+  
+  Historical Context
+  ----------------
+  Previous Interactions: ${JSON.stringify(history, null, 2)}
+  
+  Core Responsibilities:
+  1. Provide real-time wallet analysis and insights
+  2. Ensure secure transaction guidance
+  3. Offer network-specific recommendations
+  4. Maintain context awareness across user sessions
+  5. Prioritize user security and best practices
+  
+  Please analyze the provided information and respond with appropriate guidance, warnings, or insights based on the current wallet state and user history.`;
 
   try {
     const { textStream } = await streamText({

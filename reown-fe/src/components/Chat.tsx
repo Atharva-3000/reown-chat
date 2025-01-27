@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Send } from "lucide-react"
 import {SyncLoader} from "react-spinners"
 import { useAppKitAccount, useAppKitNetwork } from "@reown/appkit/react"
+import ReactMarkdown from "react-markdown"
 
 export default function Chat() {
   const [conversation, setConversation] = useState<Message[]>([])
@@ -64,7 +65,19 @@ export default function Chat() {
                 className={`max-w-[80%] p-3 rounded-lg ${message.role === "user" ? "bg-blue-500 text-white" : "bg-white text-gray-800 border border-gray-200"
                   }`}
               >
-                {message.content}
+                <ReactMarkdown 
+                  components={{
+                    p: ({children}) => <p className="mb-2 last:mb-0">{children}</p>,
+                    strong: ({children}) => <strong className="font-bold">{children}</strong>,
+                    em: ({children}) => <em className="italic">{children}</em>,
+                    ul: ({children}) => <ul className="list-disc ml-4 mb-2">{children}</ul>,
+                    ol: ({children}) => <ol className="list-decimal ml-4 mb-2">{children}</ol>,
+                    li: ({children}) => <li className="mb-1">{children}</li>,
+                    code: ({children}) => <code className="bg-gray-100 dark:bg-gray-800 rounded px-1">{children}</code>,
+                  }}
+                >
+                  {message.content}
+                </ReactMarkdown>
               </div>
             </div>
           ))}
@@ -109,4 +122,3 @@ export default function Chat() {
     </div>
   )
 }
-
