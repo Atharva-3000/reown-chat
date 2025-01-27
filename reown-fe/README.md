@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Reown AI Chat Assistant 🤖
 
-## Getting Started
+![Reown Chat](./public/bg.jpg)
 
-First, run the development server:
+A powerful AI chat assistant built on Solana using Reown AppKit, designed to provide intelligent blockchain guidance and wallet management through natural language conversations.
 
+## 🌟 Features
+
+- **Seamless Web3 Integration**
+  - Social and email login support
+  - Multi-app embedded wallets
+  - Secure wallet connection management
+  - Real-time wallet status monitoring
+
+- **Intelligent Chat Interface**
+  - Markdown rendering support
+  - Real-time streaming responses
+  - Context-aware conversations
+  - Blockchain-specific guidance
+
+- **Security & Best Practices**
+  - Secure transaction guidance
+  - Network-specific recommendations
+  - Wallet state analysis
+  - Best practice enforcement
+
+## 🛠️ Technology Stack
+
+- **Frontend**
+  - Next.js 14 with App Router
+  - React 18
+  - TailwindCSS
+  - TypeScript
+
+- **Blockchain Integration**
+  - Reown AppKit SDK
+  - Solana Wallet Adapter
+  - AppKit Solana Adapter
+
+- **AI Integration**
+  - Google AI (Gemini 1.5)
+  - Streaming response support
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ or Bun 1.0+
+- Git
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Atharva-3000/reown-chat.git
+cd reown-chat
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+bun install
+# or
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables
+```bash
+cp .env.example .env
+```
+Fill in your environment variables:
+- `GOOGLE_API_KEY`: Your Google AI API key
+- Other necessary API keys and configurations
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server
+```bash
+bun dev
+# or
+npm run dev
+```
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-To learn more about Next.js, take a look at the following resources:
+## 🎯 Bounty Project Information
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project was developed for the Reown AppKit Solana Integration Bounty (January 2025). The bounty challenged developers to create innovative applications using Reown AppKit's powerful SDK for web3 login and onboarding features.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Bounty Requirements Met:
+- ✅ Built on Solana using Reown AppKit
+- ✅ Started after January 9, 2025
+- ✅ Implements social/email login
+- ✅ Open-source and publicly accessible
+- ✅ Original concept combining AI with blockchain
+- ✅ Clean and intuitive UI/UX
+- ✅ Significant technical implementation
 
-## Deploy on Vercel
+### Key Integration Points:
+- Seamless wallet connection flow
+- Multi-app embedded wallet support
+- Social and email login integration
+- Enhanced user experience with AI assistance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Reown AppKit team for the excellent SDK
+- Solana Foundation
+- All contributors and supporters
+
+---
+Built with ❤️ for the Solana ecosystem
+
+[Grammar corrected via AI 🫡]
