@@ -1,6 +1,6 @@
 # Reown AI Chat Assistant 🤖
 
-![Reown Chat](./public/bg.jpg)
+![Reown Chat](./reown-fe/public/bg.jpg)
 
 A powerful AI chat assistant built on Solana using Reown AppKit, designed to provide intelligent blockchain guidance and wallet management through natural language conversations.
 
