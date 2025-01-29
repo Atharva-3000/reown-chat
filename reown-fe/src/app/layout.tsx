@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react"
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -17,7 +18,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   // You can now access cookies using headers()
-  
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const cookies = (await headers()).get('cookie');
 
@@ -25,7 +26,8 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {children}
-        <Toaster position="top-center"/>
+        <Toaster position="top-center" />
+        <Analytics />
       </body>
     </html>
   );
